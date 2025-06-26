@@ -1,6 +1,6 @@
 import os
 from typing import Any, Dict
-from config.settings import SETTINGS  # <- TEM que estar ANTES da linha abaixo
+from config.settings import SETTINGS  
 
 os.makedirs(os.path.dirname(SETTINGS["file_path"]), exist_ok=True)
 
@@ -13,7 +13,7 @@ Json_fisico = Dict[str, Any]
 def finding_jobs(role: str) -> None:
     all_jobs = []
 
-    for offset in range(0, 100, 10):
+    for offset in SETTINGS["offsets"]:
         url = f"https://portal.api.gupy.io/api/job?name={role}&offset={offset}&limit=10"
         response = requests.get(url)
 
