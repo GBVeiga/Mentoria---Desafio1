@@ -1,18 +1,14 @@
-from gupy import buscar_vagas  # ✅ Correto, já que está no mesmo diretório
+from datasources.gupy import finding_jobs
+from config.settings import SETTINGS
 
+import json
 
 def main():
-    vagas = [
-        "analista de dados senior",
-        "engenheiro de software" ,
-        "analista de dados jr",
-        "analise de dados pleno",
-    ]
+    for role in SETTINGS["lista_vagas"]:
+        finding_jobs(role)
 
-    buscar_vagas(vagas)
 
 if __name__ == "__main__":
     main()
-
 
     
